@@ -7,6 +7,12 @@ function crearGato(nombre, edad) {
    // La propiedad "meow" será una función que retorne el string: "Meow!".
    // Retornar el objeto.
    // Tu código:
+   var gatoCreado = {meow: function() {
+         return 'Meow!'
+   }};
+   gatoCreado['nombre'] = nombre;
+   gatoCreado['edad'] = edad;
+   return gatoCreado
 }
 
 function nuevoUsuario(nombre, email, password) {
@@ -14,6 +20,11 @@ function nuevoUsuario(nombre, email, password) {
    // Este debe tener las propiedades: "nombre", "email" y "password" con sus respectivos valores.
    // Retornar el objeto.
    // Tu código:
+   var usuarioCreado = {};
+   usuarioCreado['nombre'] = nombre;
+   usuarioCreado['email'] = email;
+   usuarioCreado['password'] = password;
+   return usuarioCreado
 }
 
 function agregarPropiedad(objeto, propiedad) {
@@ -22,6 +33,8 @@ function agregarPropiedad(objeto, propiedad) {
    // Esta propiedad será igual al valor `null`.
    // Retornar el objeto.
    // Tu código:
+   objeto[propiedad] = null;
+   return objeto
 }
 
 function invocarMetodo(objeto, metodo) {
@@ -29,24 +42,41 @@ function invocarMetodo(objeto, metodo) {
    // Esta propiedad contiene una función en su interior. Debes invocarla/ejecutarla.
    // [NOTA]: no necesitar retornar nada.
    // Tu código:
+   objeto[metodo]();
 }
 
 function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
    // El parámetro "objetoMisterioso" posee una propiedad con el nombre "numeroMisterioso".
    // Debes multiplicar este número por 5 y retornar el resultado.
    // Tu código:
+   var resultado;
+   for (var prop in objetoMisterioso) {
+      if (prop == 'numeroMisterioso') {
+         resultado = objetoMisterioso[prop] * 5;
+         return resultado
+      }
+   }
 }
 
 function eliminarPropiedad(objeto, propiedad) {
    // El parámetro "propiedad" es una propiedad del objeto que recibes.
    // Debes eliminarla del objeto y retornarlo finalmente.
    // Tu código:
+   delete objeto[propiedad];
+   return objeto
 }
 
 function tieneEmail(objetoUsuario) {
    // Verifica si el "objetoUsuario", en su propiedad "email", posee un valor definido.
    // En ese caso retornar true. Caso contrario, false.
    // Tu código:
+   for (var prop in objetoUsuario) {
+      if (prop == 'email') {
+         if (objetoUsuario[prop] !== null)
+         return true
+      }
+   }
+   return false
 }
 
 function tienePropiedad(objeto, propiedad) {
