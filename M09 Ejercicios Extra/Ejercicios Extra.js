@@ -89,7 +89,7 @@ function capicua(numero) {
          if (i + 1 <= lng/2) str1 += array[i];
          else str2 += array[i];
       }
-
+      
    } else { //Si es un numero impar:
       for (let i = 0; i < lng; i++) {
          switch(i){
@@ -105,10 +105,7 @@ function capicua(numero) {
                str1 += array[i];
                str2 += array[i];
                break;
-            }
-         }
-      }
-
+      }}}
    }
    str2 = str2.split('').reverse().join('');
    if (str1 == str2) return 'Es capicua'
