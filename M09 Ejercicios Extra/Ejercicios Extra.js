@@ -41,6 +41,23 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+   function esMayuscula (letra) {
+      return (letra === letra.toUpperCase());
+   }
+
+   let mayusculas = new Array();
+   let minusculas = new Array();
+   let array = string.split('');
+
+   array.forEach(i => {
+      if (esMayuscula(i)) mayusculas.push(i);
+      else minusculas.push(i);
+   });
+
+   let resultado = new Array();
+   mayusculas.forEach(i => resultado.push(i));
+   minusculas.forEach(i => resultado.push(i));
+   return resultado.join('');
 }
 
 function asAmirror(frase) {
@@ -48,12 +65,54 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+   let array = frase.split(' ');
+   let arrayInverso = new Array();
+
+   array.forEach(i => {
+      arrayInverso.push(i.split('').reverse().join(''))
+   });
+   return arrayInverso.join(' ');
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   let array = numero.toString().split('');
+   console.log(array);
+
+   let str1 = '', str2 = '';
+   let lng = array.length;
+
+   if (lng % 2 == 0) { //Si es un numero par:
+      for (let i = 0; i < lng; i++) {
+         if (i + 1 <= lng/2) str1 += array[i];
+         else str2 += array[i];
+      }
+
+   } else { //Si es un numero impar:
+      for (let i = 0; i < lng; i++) {
+         switch(i){
+            case (i < Math.ceil(lng/2)): {
+               str1 += array[i];
+               break;
+            }
+            case (i > Math.ceil(lng/2)): {
+               str2 += array[i];
+               break;
+            }
+            default: {
+               str1 += array[i];
+               str2 += array[i];
+               break;
+            }
+         }
+      }
+
+   }
+   str2 = str2.split('').reverse().join('');
+   if (str1 == str2) return 'Es capicua'
+   else return 'No es capicua'
 }
 
 function deleteAbc(string) {
